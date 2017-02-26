@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">FormularioContacto</string>
+    <!--<string name="nombre_completo">Nombre Completo</string>
+    <string name="telefono">Telefono</string>
+    <string name="email">Email</string>
+    <string name="descripcion">Descripción</string>-->
+    <string name="ConfFechaDia">ConfFechaDia</string>
+    <string name="ConfFechaMes">ConfFechaMes</string>
+    <string name="ConfFechaAño">ConfFechaAño</string>
+    <string name="ConfNombre">ConfNombre</string>
+    <string name="ConfTelefono">ConfTelefono</string>
+    <string name="ConfEmail">ConfEmail</string>
+    <string name="ConfDescripcion">ConfDescripcion</string>
+    <string name="FechaDia">FechaDia</string>
+    <string name="FechaMes">FechaMes</string>
+    <string name="FechaAño">FechaAño</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Telefono">Telefono</string>
+    <string name="Email">Email</string>
+    <string name="Descripcion">Descripcion</string>
+
+
+</resources>
