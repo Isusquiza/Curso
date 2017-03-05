@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cvMascota"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="10sp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20sp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/puppy1"
+            android:scaleType="centerCrop"
+            />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <ImageButton
+                    android:id="@+id/imgRate"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentStart="true"
+                    android:onClick="onClickRateImage"
+                    android:background="@drawable/dogbone" />
+
+                <TextView
+                    android:id="@+id/tvNombreMascota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="8sp"
+                    android:text="Puppy"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@+id/imgRate"/>
+
+                <TextView
+                    android:id="@+id/tvRatingMascota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="8sp"
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_toLeftOf="@+id/imgRating"/>
+
+                <ImageView
+                    android:id="@+id/imgRating"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/dogboneyellow"
+                    android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
