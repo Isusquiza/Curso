@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cvMascota"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_marginBottom="10sp"
+    android:layout_marginRight="10sp"
+    android:layout_marginLeft="10sp"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="0sp"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="163dp"
+            android:layout_height="87dp"
+            android:id="@+id/imgPerfilMascota"
+            android:src="@drawable/puppy1"
+            android:scaleType="centerInside" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10sp">
+
+            <TextView
+                android:id="@+id/tvRatingPerfilMascota"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_toLeftOf="@+id/imgRatingPerfil"
+                android:gravity="center_vertical"
+                android:paddingRight="8sp"
+                android:text="0"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imgRatingPerfil"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/dogboneyellow"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

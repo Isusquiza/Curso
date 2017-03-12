@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.jesusmariagarcia.petagram2.adapter.MascotaAdapter;
+import com.jesusmariagarcia.petagram2.pojo.Mascota;
+
 import java.util.ArrayList;
 
 public class CincoFavoritas extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.jesusmariagarcia.petagram2;
+package com.jesusmariagarcia.petagram2.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.jesusmariagarcia.petagram2.pojo.Mascota;
+import com.jesusmariagarcia.petagram2.R;
 
 import java.util.ArrayList;
 

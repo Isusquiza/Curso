@@ -1,4 +1,4 @@
-package com.jesusmariagarcia.petagram2;
+package com.jesusmariagarcia.petagram2.pojo;
 
 /**
  * Created by jesusmgarcia on 4/3/17.

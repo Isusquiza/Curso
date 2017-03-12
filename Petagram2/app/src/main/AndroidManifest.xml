@@ -16,14 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CincoFavoritas"
+        <activity
+            android:name=".CincoFavoritas"
             android:parentActivityName=".MainActivity">
+
             <!-- Soporte para versiones 4.0 o menores -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity">
-            </meta-data>
+                android:value=".MainActivity" />
         </activity>
+        <activity android:name=".menu.AboutActivity" />
+        <activity android:name=".menu.DevContactActivity"></activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
