@@ -7,7 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.jesusmariagarcia.petagram2.adapter.MascotaAdapter;
+import com.jesusmariagarcia.petagram2.db.ConstructorMascotas;
+import com.jesusmariagarcia.petagram2.db.ConstructorTop5Mascotas;
 import com.jesusmariagarcia.petagram2.pojo.Mascota;
+
 
 import java.util.ArrayList;
 
@@ -27,16 +30,12 @@ public class CincoFavoritas extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //
-        // Dataset
+        // Obtener las 5 mascotas con mas Likes
         //
 
-        mascotas = new ArrayList<Mascota>();
+        ConstructorTop5Mascotas constructorTop5Mascotas = new ConstructorTop5Mascotas(getBaseContext());
+        mascotas = constructorTop5Mascotas.obtenerTop5();
 
-        mascotas.add(new Mascota("Perro1", R.drawable.puppy1));
-        mascotas.add(new Mascota("Perro2", R.drawable.puppy2));
-        mascotas.add(new Mascota("Perro3", R.drawable.puppy3));
-        mascotas.add(new Mascota("Perro4", R.drawable.puppy4));
-        mascotas.add(new Mascota("Perro5", R.drawable.puppy5));
 
         //
         // Inicialización del RecyclerView
@@ -54,7 +53,7 @@ public class CincoFavoritas extends AppCompatActivity {
     }
 
     public void inicializarAdapter() {
-        MascotaAdapter adapter = new MascotaAdapter(mascotas);
+        MascotaAdapter adapter = new MascotaAdapter(mascotas, this);
         listaMascotas.setAdapter(adapter);
 
     }

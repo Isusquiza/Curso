@@ -6,6 +6,7 @@ package com.jesusmariagarcia.petagram2.pojo;
 
 public class Mascota {
 
+    private int id;
     private String nombreMascota;
     private int foto;
     private int rating;
@@ -14,6 +15,18 @@ public class Mascota {
         this.nombreMascota = nombreMascota;
         this.foto = foto;
         this.rating = 0;
+    }
+
+    public Mascota() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getRating() {

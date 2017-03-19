@@ -1,5 +1,6 @@
 package com.jesusmariagarcia.petagram2.adapter;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.jesusmariagarcia.petagram2.db.ConstructorMascotas;
 import com.jesusmariagarcia.petagram2.pojo.Mascota;
 import com.jesusmariagarcia.petagram2.R;
 
@@ -21,9 +23,11 @@ import java.util.ArrayList;
 public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
 
     ArrayList<Mascota> mascotas;
+    Activity activity;
 
-    public MascotaAdapter(ArrayList<Mascota> mascotas) {
+    public MascotaAdapter(ArrayList<Mascota> mascotas, Activity activity) {
         this.mascotas = mascotas;
+        this.activity = activity;
     }
 
     @Override
@@ -37,12 +41,11 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     @Override
     public void onBindViewHolder(final MascotaViewHolder mascotaViewHolder, int position) {
 
-        Mascota mascota = mascotas.get(position);
+        final Mascota mascota = mascotas.get(position);
 
         mascotaViewHolder.imgMascotaCV.setImageResource(mascota.getFoto());
         mascotaViewHolder.tvNombreMascotaCV.setText(mascota.getNombreMascota());
-        mascotaViewHolder.rating = mascota.getRating();
-        mascotaViewHolder.tvRatingMascotaCV.setText(Integer.toString(mascotaViewHolder.rating));
+        mascotaViewHolder.tvRatingMascotaCV.setText(Integer.toString(mascota.getRating()));
 
         mascotaViewHolder.imgRateBone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +53,10 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
 
                 MascotaViewHolder holder = (MascotaViewHolder) (v.getTag());
 
-                holder.rating++;
-                holder.tvRatingMascotaCV.setText(Integer.toString(holder.rating));
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.insertRating(mascota);
+                holder.tvRatingMascotaCV.setText(Integer.toString(constructorMascotas.obtenerRatingMascota(mascota)));
+
             }
         });
     }
@@ -68,7 +73,6 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
         private TextView tvNombreMascotaCV;
         private TextView tvRatingMascotaCV;
 
-        private int rating;
 
         public MascotaViewHolder(View itemView) {
             super(itemView);
@@ -77,8 +81,6 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
             imgRateBone = (ImageButton)itemView.findViewById(R.id.imgRate);
             tvNombreMascotaCV = (TextView)itemView.findViewById(R.id.tvNombreMascota);
             tvRatingMascotaCV = (TextView) itemView.findViewById(R.id.tvRatingMascota);
-
-            rating = 0;
 
             imgRateBone.setTag(this);
         }
