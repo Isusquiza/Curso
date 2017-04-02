@@ -10,8 +10,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.jesusmariagarcia.petagram2.db.ConstructorMascotas;
+import com.jesusmariagarcia.petagram2.pojo.FotoPerfil;
 import com.jesusmariagarcia.petagram2.pojo.Mascota;
 import com.jesusmariagarcia.petagram2.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -22,10 +24,10 @@ import java.util.ArrayList;
 
 public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
 
-    ArrayList<Mascota> mascotas;
+    ArrayList<FotoPerfil> mascotas;
     Activity activity;
 
-    public MascotaAdapter(ArrayList<Mascota> mascotas, Activity activity) {
+    public MascotaAdapter(ArrayList<FotoPerfil> mascotas, Activity activity) {
         this.mascotas = mascotas;
         this.activity = activity;
     }
@@ -41,13 +43,18 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     @Override
     public void onBindViewHolder(final MascotaViewHolder mascotaViewHolder, int position) {
 
-        final Mascota mascota = mascotas.get(position);
+        final FotoPerfil mascota = mascotas.get(position);
 
-        mascotaViewHolder.imgMascotaCV.setImageResource(mascota.getFoto());
-        mascotaViewHolder.tvNombreMascotaCV.setText(mascota.getNombreMascota());
+        //mascotaViewHolder.imgMascotaCV.setImageResource(mascota.getFoto());
+
+        Picasso.with(activity)
+                .load(mascota.getFoto())
+                .placeholder(R.drawable.puppy1)
+                .into(mascotaViewHolder.imgMascotaCV);
+        mascotaViewHolder.tvNombreMascotaCV.setText(mascota.getFullName());
         mascotaViewHolder.tvRatingMascotaCV.setText(Integer.toString(mascota.getRating()));
 
-        mascotaViewHolder.imgRateBone.setOnClickListener(new View.OnClickListener() {
+        /*mascotaViewHolder.imgRateBone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -58,7 +65,7 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
                 holder.tvRatingMascotaCV.setText(Integer.toString(constructorMascotas.obtenerRatingMascota(mascota)));
 
             }
-        });
+        });*/
     }
 
     @Override

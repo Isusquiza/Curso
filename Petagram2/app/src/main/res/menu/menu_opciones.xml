@@ -12,4 +12,11 @@
         android:orderInCategory="2">
 
     </item>
+    <item
+        android:id="@+id/mConfig"
+        android:title="@string/menu_config_account"
+        android:orderInCategory="3">
+
+    </item>
+
 </menu>

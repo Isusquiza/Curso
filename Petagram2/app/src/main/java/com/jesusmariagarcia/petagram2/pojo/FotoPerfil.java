@@ -6,20 +6,35 @@ package com.jesusmariagarcia.petagram2.pojo;
 
 public class FotoPerfil {
 
-    private int foto;
-    private int rating;
+    private String id;
+    private String fullName;
+    private String urlFoto;
+    private int rating = 0;
 
-    public FotoPerfil(int foto, int rating) {
-        this.foto = foto;
-        this.rating = rating;
+    public FotoPerfil() {
+    }
+    public String getId() {
+        return id;
     }
 
-    public int getFoto() {
-        return foto;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setFoto(int foto) {
-        this.foto = foto;
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getFoto() {
+        return urlFoto;
+    }
+
+    public void setFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
     public int getRating() {
@@ -29,5 +44,10 @@ public class FotoPerfil {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+
+
+
+
 
 }

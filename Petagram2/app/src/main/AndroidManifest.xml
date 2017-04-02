@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jesusmariagarcia.petagram2">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,9 +28,8 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".menu.AboutActivity" />
-        <activity android:name=".menu.DevContactActivity"></activity>
+        <activity android:name=".menu.DevContactActivity" />
+        <activity android:name=".menu.ConfigActivity"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

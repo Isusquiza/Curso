@@ -1,5 +1,6 @@
 package com.jesusmariagarcia.petagram2.adapter;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.jesusmariagarcia.petagram2.R;
 import com.jesusmariagarcia.petagram2.pojo.FotoPerfil;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -19,9 +21,11 @@ import java.util.ArrayList;
 public class FotosPerfilAdapter extends RecyclerView.Adapter<FotosPerfilAdapter.FotoPerfilViewHolder> {
 
     ArrayList<FotoPerfil> fotosPerfil;
+    Activity activity;
 
-    public FotosPerfilAdapter(ArrayList<FotoPerfil> fotosPerfil) {
+    public FotosPerfilAdapter(ArrayList<FotoPerfil> fotosPerfil, Activity activity) {
         this.fotosPerfil = fotosPerfil;
+        this.activity = activity;
     }
 
     @Override
@@ -37,7 +41,10 @@ public class FotosPerfilAdapter extends RecyclerView.Adapter<FotosPerfilAdapter.
 
         FotoPerfil fotoPerfil = fotosPerfil.get(position);
 
-        fotoPerfilViewHolder.imgPerfilMascotaCV.setImageResource(fotoPerfil.getFoto());
+        Picasso.with(activity)
+                .load(fotoPerfil.getFoto())
+                .placeholder(R.drawable.puppy1)
+                .into(fotoPerfilViewHolder.imgPerfilMascotaCV);
         fotoPerfilViewHolder.tvPerfilRatingMascotaCV.setText(Integer.toString(fotoPerfil.getRating()));
     }
 

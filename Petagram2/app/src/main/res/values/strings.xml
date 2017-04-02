@@ -2,6 +2,7 @@
     <string name="app_name">Petagram2</string>
     <string name="menu_about_title">Acerca de</string>
     <string name="menu_contact_title">Contacto</string>
+    <string name="menu_config_account">Configurar Cuenta</string>
     <string name="dev_name">Jesus M. Garcia</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -10,8 +10,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
+        <!--
         <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/civImagenPerfilMascota"
             android:layout_width="150sp"
             android:layout_height="150sp"
             android:src="@drawable/puppy1"
@@ -21,7 +22,14 @@
             app:civ_shadow="true"
             app:civ_shadow_radius="10"
             app:civ_shadow_color="#8BC34A"/>
-
+-->
+        <ImageView
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:src="@drawable/puppy1"
+            android:id="@+id/imgPerfilMascota"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerInside" />
 
         <TextView
             android:id="@+id/tvNombrePerfilMascota"

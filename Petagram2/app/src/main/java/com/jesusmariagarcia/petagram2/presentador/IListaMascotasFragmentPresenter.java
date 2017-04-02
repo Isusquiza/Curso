@@ -5,6 +5,8 @@ package com.jesusmariagarcia.petagram2.presentador;
  */
 
 public interface IListaMascotasFragmentPresenter {
-    public void obtenerMascotasBaseDatos();
+    //public void obtenerMascotasBaseDatos();
+    public void obtenerFollowers();
+    public void obtenerFollowersMediaRecent(String id);
     public void mostrarMascotasRV();
 }

@@ -41,20 +41,20 @@ public class CincoFavoritas extends AppCompatActivity {
         // Inicialización del RecyclerView
         //
 
-        listaMascotas = (RecyclerView) findViewById(R.id.rv5MascotasFavoritas);
+        /*listaMascotas = (RecyclerView) findViewById(R.id.rv5MascotasFavoritas);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         listaMascotas.setLayoutManager(llm);
 
-        inicializarAdapter();
+        inicializarAdapter();*/
 
     }
 
     public void inicializarAdapter() {
-        MascotaAdapter adapter = new MascotaAdapter(mascotas, this);
-        listaMascotas.setAdapter(adapter);
+        /*MascotaAdapter adapter = new MascotaAdapter(mascotas, this);
+        listaMascotas.setAdapter(adapter);*/
 
     }
 }

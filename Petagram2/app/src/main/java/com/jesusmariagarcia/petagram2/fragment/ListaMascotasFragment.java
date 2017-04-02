@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.jesusmariagarcia.petagram2.R;
 import com.jesusmariagarcia.petagram2.adapter.MascotaAdapter;
+import com.jesusmariagarcia.petagram2.pojo.FotoPerfil;
 import com.jesusmariagarcia.petagram2.pojo.Mascota;
 import com.jesusmariagarcia.petagram2.presentador.IListaMascotasFragmentPresenter;
 import com.jesusmariagarcia.petagram2.presentador.ListaMascotasFragmentPresenter;
@@ -56,7 +57,7 @@ public class ListaMascotasFragment extends Fragment implements IListaMascotasFra
     }
 
     @Override
-    public MascotaAdapter crearAdaptador(ArrayList<Mascota> mascotas) {
+    public MascotaAdapter crearAdaptador(ArrayList<FotoPerfil> mascotas) {
         MascotaAdapter adapter = new MascotaAdapter(mascotas, getActivity());
         return adapter;
     }

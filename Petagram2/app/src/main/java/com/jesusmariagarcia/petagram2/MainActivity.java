@@ -17,6 +17,7 @@ import com.jesusmariagarcia.petagram2.adapter.PageAdapter;
 import com.jesusmariagarcia.petagram2.fragment.ListaMascotasFragment;
 import com.jesusmariagarcia.petagram2.fragment.PerfilMascotaFragment;
 import com.jesusmariagarcia.petagram2.menu.AboutActivity;
+import com.jesusmariagarcia.petagram2.menu.ConfigActivity;
 import com.jesusmariagarcia.petagram2.menu.DevContactActivity;
 import com.jesusmariagarcia.petagram2.pojo.Mascota;
 
@@ -67,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent contactIntent = new Intent(this, DevContactActivity.class);
                 startActivity(contactIntent);
                 break;
+
+            case R.id.mConfig:
+                Intent configIntent = new Intent(this, ConfigActivity.class);
+                startActivity(configIntent);
         }
 
         return super.onOptionsItemSelected(item);
