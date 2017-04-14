@@ -66,4 +66,16 @@ public class RestApiAdapter {
 
         return gsonBuilder.create();
     }
+
+    public EndpointsApi establecerConexionRestApiHeroku() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ConstantesRestApi.HEROKU_ROOT_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(EndpointsApi.class);
+    }
+
+
+
 }

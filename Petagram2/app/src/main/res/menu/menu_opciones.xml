@@ -18,5 +18,10 @@
         android:orderInCategory="3">
 
     </item>
+    <item
+        android:id="@+id/mNotifications"
+        android:title="@string/menu_config_notifications"
+        android:orderInCategory="4">
 
+    </item>
 </menu>

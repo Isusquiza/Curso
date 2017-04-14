@@ -1,6 +1,8 @@
 package com.jesusmariagarcia.petagram2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,10 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.jesusmariagarcia.petagram2.adapter.MascotaAdapter;
 import com.jesusmariagarcia.petagram2.adapter.PageAdapter;
 import com.jesusmariagarcia.petagram2.fragment.ListaMascotasFragment;
@@ -20,14 +25,24 @@ import com.jesusmariagarcia.petagram2.menu.AboutActivity;
 import com.jesusmariagarcia.petagram2.menu.ConfigActivity;
 import com.jesusmariagarcia.petagram2.menu.DevContactActivity;
 import com.jesusmariagarcia.petagram2.pojo.Mascota;
+import com.jesusmariagarcia.petagram2.restApi.EndpointsApi;
+import com.jesusmariagarcia.petagram2.restApi.adapter.RestApiAdapter;
+import com.jesusmariagarcia.petagram2.restApi.model.InstaUserResponse;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private String instaUser = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
             setSupportActionBar(actionBar);
 
         setUpViewPager();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
 
     }
 
@@ -72,9 +93,49 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mConfig:
                 Intent configIntent = new Intent(this, ConfigActivity.class);
                 startActivity(configIntent);
+                break;
+
+            case R.id.mNotifications:
+                String token = FirebaseInstanceId.getInstance().getToken();
+
+                SharedPreferences misPreferencias = getSharedPreferences("Instagram", Context.MODE_PRIVATE);
+                instaUser = misPreferencias.getString("User", "1");
+
+                if(instaUser != "1")
+                    enviarUserYToken(token, instaUser);
+                else
+                    Toast.makeText(this, "Por favor configure la cuenta de instagram", Toast.LENGTH_SHORT).show();
+
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void enviarUserYToken(String token, String user) {
+
+        Log.d("TOKEN", token);
+
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiHeroku();
+        Call<InstaUserResponse> instaUserResponseCall = endpointsApi.registrarUsuario(token, user);
+
+        instaUserResponseCall.enqueue(new Callback<InstaUserResponse>() {
+            @Override
+            public void onResponse(Call<InstaUserResponse> call, Response<InstaUserResponse> response) {
+                InstaUserResponse instaUserResponse = response.body();
+
+                Log.d("ID_FIREBASE", instaUserResponse.getId());
+                Log.d("TOKEN_USER", instaUserResponse.getToken());
+                Log.d("INSTA_USER", instaUserResponse.getUser());
+            }
+
+            @Override
+            public void onFailure(Call<InstaUserResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     public void irTop5Mascotas(View v)
