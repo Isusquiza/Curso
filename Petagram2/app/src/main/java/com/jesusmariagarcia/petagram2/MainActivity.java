@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
             setSupportActionBar(actionBar);
 
         setUpViewPager();
+
+        if(getIntent().getAction().equals("OPEN_TAB_1"))
+            tabLayout.getTabAt(1).select();
+
     }
 
     @Override

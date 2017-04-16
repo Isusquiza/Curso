@@ -37,9 +37,11 @@ public class FotoPerfilDeserializador implements JsonDeserializer<UserResponse> 
         for(int i = 0; i < userResponseData.size(); i++) {
 
             JsonObject userResponseDataObject = userResponseData.get(i).getAsJsonObject();
+            String mediaId = userResponseDataObject.get(JsonKeys.MEDIA_ID).getAsString();
+
             JsonObject userJson = userResponseDataObject.getAsJsonObject(JsonKeys.USER);
 
-            String id =  userJson.get(JsonKeys.USER_ID).getAsString();
+            String userName =  userJson.get(JsonKeys.USER_NAME).getAsString();
             String fullName = userJson.get(JsonKeys.USER_FULLNAME).getAsString();
 
             JsonObject imageJson = userResponseDataObject.getAsJsonObject(JsonKeys.MEDIA_IMAGES);
@@ -51,9 +53,10 @@ public class FotoPerfilDeserializador implements JsonDeserializer<UserResponse> 
 
             FotoPerfil fotoPerfilActual = new FotoPerfil();
 
-            fotoPerfilActual.setId(id);
+            fotoPerfilActual.setUserName(userName);
+            fotoPerfilActual.setMediaId(mediaId);
             fotoPerfilActual.setFullName(fullName);
-            fotoPerfilActual.setFoto(urlFoto);
+            fotoPerfilActual.setUrlFoto(urlFoto);
             fotoPerfilActual.setRating(likes);
 
             fotoPerfil.add(fotoPerfilActual);

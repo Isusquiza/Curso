@@ -42,7 +42,7 @@ public class FotosPerfilAdapter extends RecyclerView.Adapter<FotosPerfilAdapter.
         FotoPerfil fotoPerfil = fotosPerfil.get(position);
 
         Picasso.with(activity)
-                .load(fotoPerfil.getFoto())
+                .load(fotoPerfil.getUrlFoto())
                 .placeholder(R.drawable.puppy1)
                 .into(fotoPerfilViewHolder.imgPerfilMascotaCV);
         fotoPerfilViewHolder.tvPerfilRatingMascotaCV.setText(Integer.toString(fotoPerfil.getRating()));

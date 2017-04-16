@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.jesusmariagarcia.petagram2.db.ConstructorMascotas;
 import com.jesusmariagarcia.petagram2.pojo.FotoPerfil;
 import com.jesusmariagarcia.petagram2.pojo.Mascota;
@@ -48,24 +49,37 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
         //mascotaViewHolder.imgMascotaCV.setImageResource(mascota.getFoto());
 
         Picasso.with(activity)
-                .load(mascota.getFoto())
+                .load(mascota.getUrlFoto())
                 .placeholder(R.drawable.puppy1)
                 .into(mascotaViewHolder.imgMascotaCV);
         mascotaViewHolder.tvNombreMascotaCV.setText(mascota.getFullName());
         mascotaViewHolder.tvRatingMascotaCV.setText(Integer.toString(mascota.getRating()));
 
-        /*mascotaViewHolder.imgRateBone.setOnClickListener(new View.OnClickListener() {
+        mascotaViewHolder.imgRateBone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 MascotaViewHolder holder = (MascotaViewHolder) (v.getTag());
 
-                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                /*ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
                 constructorMascotas.insertRating(mascota);
-                holder.tvRatingMascotaCV.setText(Integer.toString(constructorMascotas.obtenerRatingMascota(mascota)));
+                holder.tvRatingMascotaCV.setText(Integer.toString(constructorMascotas.obtenerRatingMascota(mascota)));*/
+
+                //
+                // Enviar like a instagram
+                //
+
+                mascota.getiListaMascotasFragmentPresenter().mediaSetLike(mascota.getMediaId());
+
+                //
+                // Enviar datos a mi endpoint y guardarlo en la base de datos. Enviar notificación
+                //
+
+                String token = FirebaseInstanceId.getInstance().getToken();
+                mascota.getiListaMascotasFragmentPresenter().registerLike(token, mascota.getUserName(), mascota.getMediaId());
 
             }
-        });*/
+        });
     }
 
     @Override

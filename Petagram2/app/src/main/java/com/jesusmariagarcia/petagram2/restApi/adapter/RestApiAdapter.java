@@ -10,11 +10,15 @@ import com.jesusmariagarcia.petagram2.restApi.deserializador.FotoPerfilDeseriali
 import com.jesusmariagarcia.petagram2.restApi.deserializador.ProfileDeserializador;
 import com.jesusmariagarcia.petagram2.restApi.model.BusquedaResponse;
 import com.jesusmariagarcia.petagram2.restApi.model.FollowersResponse;
+import com.jesusmariagarcia.petagram2.restApi.model.LikeResponse;
 import com.jesusmariagarcia.petagram2.restApi.model.ProfileResponse;
 import com.jesusmariagarcia.petagram2.restApi.model.UserResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -34,6 +38,15 @@ public class RestApiAdapter {
                 .baseUrl(ConstantesRestApi.ROOT_URL)
                 .client(clientBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        return retrofit.create(EndpointsApi.class);
+    }
+
+    public EndpointsApi establecerConexionRestApiInstagram2() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ConstantesRestApi.ROOT_URL)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         return retrofit.create(EndpointsApi.class);

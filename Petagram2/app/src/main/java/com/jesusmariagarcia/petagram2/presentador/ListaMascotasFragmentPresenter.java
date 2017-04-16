@@ -12,7 +12,9 @@ import com.jesusmariagarcia.petagram2.pojo.Mascota;
 import com.jesusmariagarcia.petagram2.restApi.ConstantesRestApi;
 import com.jesusmariagarcia.petagram2.restApi.EndpointsApi;
 import com.jesusmariagarcia.petagram2.restApi.adapter.RestApiAdapter;
+import com.jesusmariagarcia.petagram2.restApi.model.FirebaseLikeResponse;
 import com.jesusmariagarcia.petagram2.restApi.model.FollowersResponse;
+import com.jesusmariagarcia.petagram2.restApi.model.LikeResponse;
 import com.jesusmariagarcia.petagram2.restApi.model.UserResponse;
 
 import java.util.ArrayList;
@@ -89,6 +91,7 @@ public class ListaMascotasFragmentPresenter implements IListaMascotasFragmentPre
     @Override
     public void obtenerFollowersMediaRecent(String id) {
 
+        final IListaMascotasFragmentPresenter presenter = this;
         RestApiAdapter restApiAdapter = new RestApiAdapter();
 
         Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent();
@@ -103,7 +106,10 @@ public class ListaMascotasFragmentPresenter implements IListaMascotasFragmentPre
 
                 UserResponse userResponse = response.body();
                 fotosPerfilUsuario = userResponse.getFotosPerfil();
-
+                for(int i = 0; i < fotosPerfilUsuario.size();i++)
+                {
+                    fotosPerfilUsuario.get(i).setiListaMascotasFragmentPresenter(presenter);
+                }
                 // Añadir fotos de cada perfil a mascotas
                 fotosPerfilTotal.addAll(fotosPerfilUsuario);
                 mostrarMascotasRV();
@@ -116,6 +122,49 @@ public class ListaMascotasFragmentPresenter implements IListaMascotasFragmentPre
             }
         });
     }
+
+    public void mediaSetLike(String mediaId) {
+
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram2();
+
+        String url = String.format(ConstantesRestApi.URL_SET_LIKE, mediaId);
+        Call<LikeResponse> likeResponseCall =  endpointsApi.mediaSetLike(url);
+
+        likeResponseCall.enqueue(new Callback<LikeResponse>() {
+            @Override
+            public void onResponse(Call<LikeResponse> call, Response<LikeResponse> response) {
+                LikeResponse likeResponse = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<LikeResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void registerLike(String token, String user, String mediaId) {
+
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiHeroku();
+        Call<FirebaseLikeResponse> firebaseLikeResponseCall = endpointsApi.registrarLike(token, user, mediaId);
+
+        firebaseLikeResponseCall.enqueue(new Callback<FirebaseLikeResponse>() {
+            @Override
+            public void onResponse(Call<FirebaseLikeResponse> call, Response<FirebaseLikeResponse> response) {
+                FirebaseLikeResponse firebaseLikeResponse = response.body();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<FirebaseLikeResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
 
     @Override
     public void mostrarMascotasRV() {

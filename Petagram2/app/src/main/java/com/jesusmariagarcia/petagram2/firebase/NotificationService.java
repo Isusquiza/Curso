@@ -39,6 +39,7 @@ public class NotificationService extends FirebaseMessagingService {
         }
 
         Intent i = new Intent(this, MainActivity.class);
+        i.setAction("OPEN_TAB_1");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_ONE_SHOT);
 
         Uri sonido = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
