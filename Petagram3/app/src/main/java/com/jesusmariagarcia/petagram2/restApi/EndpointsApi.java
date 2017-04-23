@@ -38,6 +38,10 @@ public interface EndpointsApi {
     Call<LikeResponse> mediaSetLike(@Url String url);
 
     @FormUrlEncoded
+    @POST
+    Call<LikeResponse> followUser(@Url String url, @Field("action") String follow);
+
+    @FormUrlEncoded
     @POST(ConstantesRestApi.KEY_POST_REGISTRAR_USUARIO)
     Call<InstaUserResponse> registrarUsuario(@Field("token") String token, @Field("user") String user);
 

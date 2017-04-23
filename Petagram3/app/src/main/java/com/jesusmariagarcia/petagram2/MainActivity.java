@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.jesusmariagarcia.petagram2.adapter.MascotaAdapter;
 import com.jesusmariagarcia.petagram2.adapter.PageAdapter;
+import com.jesusmariagarcia.petagram2.fragment.FollowUserFragment;
 import com.jesusmariagarcia.petagram2.fragment.ListaMascotasFragment;
 import com.jesusmariagarcia.petagram2.fragment.PerfilMascotaFragment;
 import com.jesusmariagarcia.petagram2.menu.AboutActivity;
@@ -63,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(getIntent().getAction().equals("OPEN_TAB_1"))
             tabLayout.getTabAt(1).select();
+
+        if(getIntent().getAction().equals("OPEN_TAB_2"))
+        {
+            tabLayout.getTabAt(2).select();
+        }
 
     }
 
@@ -154,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragments.add(new ListaMascotasFragment());
         fragments.add(new PerfilMascotaFragment());
+        fragments.add(new FollowUserFragment());
 
         return fragments;
     }
@@ -165,6 +172,6 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_dog_profile);
-
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_dog_profile);
     }
 }

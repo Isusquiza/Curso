@@ -44,6 +44,12 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
+
+        <receiver android:name=".firebase.FollowUserBroadcast" android:enabled="true">
+            <intent-filter>
+                <action android:name="FOLLOW_USER"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

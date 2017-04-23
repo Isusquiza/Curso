@@ -33,8 +33,12 @@ public final class ConstantesRestApi {
     public static final String KEY_SET_LIKE = "media/%s/likes";
     public static final String URL_SET_LIKE = KEY_SET_LIKE + "?" + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
+    // https://api.instagram.com/v1/users/{user-id}/relationship?access_token=ACCESS-TOKEN
+    public static final String KEY_FOLLOW_USER = "users/%s/relationship";
+    public static final String URL_FOLLOW_USER = KEY_FOLLOW_USER + "?" + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
-    // https://lit-thicket-75404.herokuapp.com/
+
+    // https://lit-thicket-75404.herokuapp.com/KEY_FOLLOW_USER
     public static final String HEROKU_ROOT_URL = "https://lit-thicket-75404.herokuapp.com/";
     public static final String KEY_POST_REGISTRAR_USUARIO = "registrar-usuario/";
     public static final String KEY_GET_REGISTRAR_LIKE = "registrar-like/";
