@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Petagram2</string>
+    <string name="menu_about_title">Acerca de</string>
+    <string name="menu_contact_title">Contacto</string>
+    <string name="menu_config_account">Configurar Cuenta</string>
+    <string name="menu_config_notifications">Recibir Notificaciones</string>
+
+    <string name="dev_name">Jesus M. Garcia</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="texto_accion">texto_accion</string>
+
+</resources>

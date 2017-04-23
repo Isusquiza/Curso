@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mContact"
+        android:title="@string/menu_contact_title"
+        android:orderInCategory="1">
+
+    </item>
+    <item
+        android:id="@+id/mAbout"
+        android:title="@string/menu_about_title"
+        android:orderInCategory="2">
+
+    </item>
+    <item
+        android:id="@+id/mConfig"
+        android:title="@string/menu_config_account"
+        android:orderInCategory="3">
+
+    </item>
+    <item
+        android:id="@+id/mNotifications"
+        android:title="@string/menu_config_notifications"
+        android:orderInCategory="4">
+
+    </item>
+</menu>
